@@ -12,7 +12,7 @@ sbt run
 Alternatively, for using file as an input, run 
 
 ```sh
-cat file.txt | sbt run
+cat data.txt | sbt run
 ```
 Note:
 There should be "EOF" line at the end of the file
