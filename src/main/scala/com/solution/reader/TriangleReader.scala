@@ -3,14 +3,16 @@ package com.solution.reader
 import com.solution.api.Types.{ErrorOr, Triangle}
 import com.solution.parser.TriangleParser
 
+import scala.io.StdIn
+
 trait TriangleReader {
   def read(): ErrorOr[Triangle]
 }
 
-class ConsoleTriangleReader(parser: TriangleParser) extends TriangleReader {
+class StdInTriangleReader(parser: TriangleParser) extends TriangleReader {
   override def read(): ErrorOr[Triangle] = {
     val triangle: List[ErrorOr[List[Int]]] =
-      Iterator.continually(Console.in.readLine())
+      Iterator.continually(StdIn.readLine())
         .takeWhile(!_.equals("EOF"))
         .zipWithIndex.map { case (line, index) =>
         parser.parseLine(line, index + 1)
