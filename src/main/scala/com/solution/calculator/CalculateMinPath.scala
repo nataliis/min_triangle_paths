@@ -33,6 +33,9 @@ class CalculateMinPathRecursively extends CalculateMinPath {
           }.toList
       }
     }
-    calculatePath(triangleList).head
+    calculatePath(triangleList) match {
+      case Nil => Path(0, List.empty)
+      case x :: _ => x
+    }
   }
 }
